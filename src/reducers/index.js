@@ -1,4 +1,4 @@
-import { ADD_TODO } from "../actions/constants.js";
+import { ADD_TODO, TOGGLE_TODO } from "../actions/constants.js";
 
 const initialState = {
   todos: []
@@ -10,7 +10,15 @@ function rootReducer(state = initialState, action) {
       todos: state.todos.concat(action.payload)
     });
   }
-  return state;
+  if (action.type === TOGGLE_TODO) {
+    state.todos.map(el => {
+      if(action.payload === el.id) {
+        return(el.isCompleted = true)
+      } else {
+        return el;
+      }
+    })
+  } return state;
 }
 
 export default rootReducer;

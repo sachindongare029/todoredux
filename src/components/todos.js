@@ -1,8 +1,14 @@
 import React from 'react';
 import { connect } from "react-redux";
+import { toggleTodo } from "../actions/index";
 
 const mapStateToProps = state => {
   return { todos: state.todos };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleTodo: id => dispatch(toggleTodo(id))
+  };
 };
 
 class Todos extends React.Component {
@@ -20,8 +26,10 @@ class Todos extends React.Component {
     } else {
       e.target.nextSibling.style.textDecoration = "none";
     }
+    this.props.toggleTodo(e.target.id);
   }
   render() {
+    // console.log(this.props);
     return (
       <div className="todo-items">
         {this.props.todos.map(el => (
@@ -39,4 +47,7 @@ class Todos extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(Todos);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Todos);
