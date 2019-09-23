@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 import Todos from './components/todos';
-import VisibilityFilters from './components/visibilityFilters';
+import VisibilityFilters from './components/visibility';
 import {connect} from 'react-redux';
 import uuidv1 from 'uuid';
 import { addTodo } from './actions/index';
