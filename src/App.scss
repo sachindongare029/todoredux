@@ -41,10 +41,32 @@
       color: white;
       line-height: 26px;
       padding-left: 25px;
+      margin-top: 10px;
       .todo {
         input {
           margin: 4px 10px;
         }
+      }
+    }
+    .visibility-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 16px;
+      .visibility-btns {
+        background: white;
+        border: 1px solid #586360;
+        border-radius: 5px;
+        height: 32px;
+        margin: 0 8px;
+        font-size: 14px;
+        font-weight: 700;
+        font-style: italic;
+        outline: none;
+      }
+      .active {
+        color: #019c01;
+        background-color: #fff;
+        box-shadow: 3px 3px #777777;
       }
     }
   }

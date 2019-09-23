@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
 import Todos from './components/todos';
+import VisibilityFilters from './components/visibilityFilters';
 import {connect} from 'react-redux';
 import uuidv1 from 'uuid';
 import { addTodo } from './actions/index';
@@ -51,6 +52,7 @@ class App extends React.Component {
             />
             <button type="submit">Add </button>
           </form>
+          <VisibilityFilters />
           <Todos />
         </div>
       </div>
