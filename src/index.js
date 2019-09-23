@@ -5,9 +5,9 @@ import App from "./App";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./reducers";
-import { addArticle } from "./actions";
+import { addTodo } from "./actions";
 
-window.addArticle = addArticle;
+window.addTodo = addTodo;
 
 const store = createStore(
   rootReducer,

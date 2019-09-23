@@ -1,20 +1,40 @@
 import React from 'react';
 import './App.scss';
 import Todos from './components/todos';
+import {connect} from 'react-redux';
+import uuidv1 from 'uuid';
+import { addTodo } from './actions/index';
 
-let input;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addTodo: todo => dispatch(addTodo(todo))
+  };
+}
+
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      title: ""
+    };
     
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleChange(e) {
+    this.setState({
+      title: e.target.value
+    })
   }
   handleSubmit(e) {
     e.preventDefault();
-    console.log("submitted", input.value);
-    e.target.reset();
+    const { title } = this.state;
+    const id = uuidv1();
+    this.props.addTodo({ title, id });
+    this.setState({ title: "" });
   }
   render() {
+    let {title} = this.state;
     return (
       <div className="App">
         <div className="form-container">
@@ -23,7 +43,8 @@ class App extends React.Component {
             <input
               type="text"
               placeholder="What do you want to do ?"
-              ref={node => (input = node)}
+              value={title}
+              onChange={(e) => this.handleChange(e)}
             />
             <button type="submit">Add </button>
           </form>
@@ -34,4 +55,7 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default connect(
+  null,
+  mapDispatchToProps
+)(App);

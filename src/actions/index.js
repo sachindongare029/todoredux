@@ -1,5 +1,5 @@
-import { ADD_ARTICLE } from "./constants";
+import { ADD_TODO } from "./constants";
 
-export function addArticle(payload) {
-  return { type: ADD_ARTICLE, payload };
+export function addTodo(payload) {
+  return { type: ADD_TODO, payload };
 }
