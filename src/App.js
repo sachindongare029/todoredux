@@ -29,6 +29,9 @@ class App extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const { title } = this.state;
+    if(!title.trim()) {
+      return;
+    }
     const id = uuidv1();
     this.props.addTodo({ title, id });
     this.setState({ title: "" });
