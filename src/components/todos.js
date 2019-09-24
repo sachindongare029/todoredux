@@ -4,7 +4,7 @@ import { toggleTodo } from "../actions/index";
 import VisibilityFilters from "./visibility";
 
 const mapStateToProps = state => {
-  return { todos: state.todos, visibilityFilter: state.visibilityFilter };
+  return { todos: getVisibleTodos(state.todos.todos, state.visibilityFilter)};
 };
 const mapDispatchToProps = dispatch => {
   return {
@@ -12,43 +12,41 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+const getVisibleTodos = (todos,filter) => {
+  switch (filter) {
+    case 'SHOW_ALL':
+      return todos;
+    case 'SHOW_COMPLETED':
+      return todos.filter(
+        t => t.isCompleted
+      );
+    case 'SHOW_ACTIVE':
+      return todos.filter(
+        t => !t.isCompleted
+      );
+    default:
+      return todos;
+  }
+}
+
 class Todos extends React.Component {
   constructor(props) {
     super(props);
   
-    this.getVisibleTodos = this.getVisibleTodos.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
   }
 
-  getVisibleTodos(todos,filter) {
-    switch (filter) {
-      case 'SHOW_ALL':
-        return todos;
-      case 'SHOW_COMPLETED':
-        return todos.filter(
-          t => t.isCompleted
-        );
-      case 'SHOW_ACTIVE':
-        return todos.filter(
-          t => !t.isCompleted
-        );
-      default:
-        return todos;
-    }
-  }
   handleToggle(e) {
     this.props.toggleTodo(e.target.id);
   }
 
   render() {
-    let {todos} = this.props.todos;
-    let {visibilityFilter} = this.props;
-    const visibleTodos = this.getVisibleTodos(todos, visibilityFilter);
+    let { todos } = this.props;
     return (
       <div className="todo-items">
         <VisibilityFilters />
         <ul>
-          {visibleTodos.map(el => (
+          {todos.map(el => (
             <li
               className="todo-title"
               style={{
