@@ -29,10 +29,10 @@ class Todos extends React.Component {
     this.props.toggleTodo(e.target.id);
   }
   render() {
-    // console.log(this.props);
+    let {todos} = this.props.todos;
     return (
       <div className="todo-items">
-        {this.props.todos.map(el => (
+        {todos.map(el => (
           <div className="todo" key={el.id}>
             <input
               type="checkbox"
