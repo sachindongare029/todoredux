@@ -13,7 +13,7 @@ function rootReducer(state = initialState, action) {
   if (action.type === TOGGLE_TODO) {
     state.todos.map(el => {
       if (action.payload === el.id) {
-        return (el.isCompleted = true);
+        return (el.isCompleted = !el.isCompleted);
       } else {
         return el;
       }

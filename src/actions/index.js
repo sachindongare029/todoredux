@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO } from "./constants";
+import { ADD_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER } from "./constants";
 
 export function addTodo(payload) {
   return { type: ADD_TODO, payload: {...payload, isCompleted: false} };
@@ -7,6 +7,11 @@ export function addTodo(payload) {
 export const toggleTodo = id => ({
   type: TOGGLE_TODO,
   payload:id
+});
+
+export const setVisibilityFilter = filter => ({
+  type: SET_VISIBILITY_FILTER,
+  filter
 });
 
 export const VisibilityFilters = {

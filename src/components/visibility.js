@@ -1,4 +1,12 @@
 import React, { Component } from 'react'
+import { connect } from "react-redux";
+import { setVisibilityFilter } from '../actions/index';
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setVisibilityFilter: filter => dispatch(setVisibilityFilter(filter))
+  };
+};
 
 class visibilityFilters extends Component {
   constructor(props) {
@@ -12,17 +20,21 @@ class visibilityFilters extends Component {
       node.classList.remove("active");
     }
     e.target.classList.add("active");
+    this.props.setVisibilityFilter(e.target.value);
   }
 
   render() {
     return (
       <div className="visibility-container">
-        <button className="visibility-btns active" value="show-all" onClick={e => this.handleClick(e)}>Show All</button>
-        <button className="visibility-btns" value="show-active" onClick={e => this.handleClick(e)}>Show Active</button>
-        <button className="visibility-btns" value="show-completed" onClick={e => this.handleClick(e)}>Show Completed</button>
+        <button className="visibility-btns active" value="SHOW_ALL" onClick={e => this.handleClick(e)}>Show All</button>
+        <button className="visibility-btns" value="SHOW_ACTIVE" onClick={e => this.handleClick(e)}>Show Active</button>
+        <button className="visibility-btns" value="SHOW_COMPLETED" onClick={e => this.handleClick(e)}>Show Completed</button>
       </div>
     );
   }
 }
 
-export default visibilityFilters;
+export default connect(
+  null,
+  mapDispatchToProps
+)(visibilityFilters);
