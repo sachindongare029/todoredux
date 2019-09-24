@@ -17,6 +17,7 @@ class Todos extends React.Component {
     super(props);
   
     this.getVisibleTodos = this.getVisibleTodos.bind(this);
+    this.handleToggle = this.handleToggle.bind(this);
   }
 
   getVisibleTodos(todos,filter) {
@@ -35,6 +36,9 @@ class Todos extends React.Component {
         return todos;
     }
   }
+  handleToggle(e) {
+    this.props.toggleTodo(e.target.id);
+  }
 
   render() {
     let {todos} = this.props.todos;
@@ -52,7 +56,7 @@ class Todos extends React.Component {
               }}
               id={el.id}
               key={el.id}
-              onClick={e => this.props.toggleTodo(e.target.id)}
+              onClick={e => this.handleToggle(e)}
             >
               {el.title}
             </li>
