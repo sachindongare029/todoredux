@@ -1,0 +1,6 @@
+export const ADD_TODO = "ADD_TODO";
+export const REMOVE_TODO = "REMOVE_TODO";
+export const TOGGLE_TODO = "TOGGLE_TODO";
+export const ASYNC_CALL_STARTED = "ASYNC_CALL_STARTED";
+export const ASYNC_CALL_SUCCESS = "ASYNC_CALL_SUCCESS";
+export const ASYNC_CALL_FAILURE = "ASYNC_CALL_FAILURE";

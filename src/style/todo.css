@@ -1,0 +1,104 @@
+.todo__container {
+  width: 35%;
+  margin: 0 auto;
+}
+.todo__input__container {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 10px 20px;
+}
+.todo__input__container input {
+  width: 70%;
+  border: 0;
+  border-bottom: 2px solid #909090;
+  font-size: 16px;
+  outline: none;
+}
+.todo__input__container .add__todo--btn {
+  width: 26%;
+  padding: 10px;
+  font-size: 12px;
+  background: #c0ff00;
+  border: 2px solid #464646;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+}
+.block__saperator {
+  margin: 10px 0;
+  border-bottom: 2px dashed #000;
+}
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.todo__item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  background-color: #fbff00;
+  margin: 10px 0;
+}
+.todo__item .toggle__todo--chkbox {
+  width: 18px;
+  height: 18px;
+}
+.todo__item .todo__toggle__grouped {
+  display: flex;
+  align-items: center;
+}
+.todo__item .todo__title {
+  margin-left: 20px;
+}
+.todo__item .remove__todo--btn {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: unset;
+}
+.completed {
+  background-color: #07bb07;
+}
+.completed .todo__title {
+  text-decoration: line-through;
+  word-break: break-word;
+}
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .todo__input__container {
+    flex-direction: column;
+  }
+  .todo__input__container input {
+    width: 100% !important;
+    padding: 0;
+  }
+  .todo__input__container .add__todo--btn {
+    width: 100% !important;
+    margin-top: 10px;
+  }
+  .todo__item {
+    flex-direction: column;
+    padding: 5px;
+  }
+  .todo__item .todo__toggle__grouped {
+    flex-direction: column;
+  }
+  .todo__title {
+    margin-left: 0 !important;
+    font-size: 14px;
+    word-break: break-word;
+  }
+  .todo__item .toggle__todo--chkbox {
+    width: 14px !important;
+    height: 14px !important;
+  }
+  .todo__item .remove__todo--btn {
+    font-size: 14px !important;
+  }
+}
