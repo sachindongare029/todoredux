@@ -1,6 +1,8 @@
 import React from "react";
+import withSampleProps from "../HOC/withSampleProps";
 
-export default function TodoList(props) {
+function TodoList(props) {
+  console.log("props in list ", props.data);
   const handleToggle = (item) => {
     props.handleToggle(item);
   };
@@ -41,3 +43,5 @@ export default function TodoList(props) {
     </div>
   );
 }
+
+export default withSampleProps(TodoList);

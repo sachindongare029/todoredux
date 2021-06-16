@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import withSampleProps from "../HOC/withSampleProps";
 
-export default function TodoInput(props) {
+function TodoInput(props) {
+  console.log("props in input", props.data);
   const [todoText, setTodoText] = useState("");
   const handleChange = (e) => {
     setTodoText(e.target.value);
   };
   const addTodo = () => {
-    if(todoText === "") {
+    if (todoText === "") {
       return;
     } else {
       setTodoText("");
@@ -22,3 +24,5 @@ export default function TodoInput(props) {
     </div>
   );
 }
+
+export default withSampleProps(TodoInput);
